@@ -1,8 +1,8 @@
 from .utils import *
 
 
-def linear_congruential(min, max):
-    print('\n--- Linear congruential generator ---')
+def quadratic_congruential(min, max):
+    print('\n--- Quadratic congruential generator ---')
     quantity = int(input('Enter the quantity of pseudo-randomized numbers: '))
 
     m = generate_prime_number(min, max)
@@ -14,9 +14,9 @@ def linear_congruential(min, max):
 
 
 def generate_numbers(min, max, quantity, m=None):
-    x, a, c, m = generate_coefficients(min, max, m)
+    x, a, d, c, m = generate_coefficients(min, max, m)
 
-    return list(generator(x, a, c, m, quantity))
+    return list(generator(x, a, d, c, m, quantity))
 
 
 def generate_coefficients(min, max, m=None):
@@ -28,8 +28,8 @@ def generate_coefficients(min, max, m=None):
 
     divisors = find_prime_divisors(m)
 
-    if m % 4 == 0:
-        divisors = list(filter(lambda divisor: divisor % 4 == 0, divisors))
+    if 2 in divisors:
+        divisors.remove(2)
 
     temp = generate_number(0, m - 1)
 
@@ -38,16 +38,31 @@ def generate_coefficients(min, max, m=None):
 
     a = temp
 
-    return x, a, c, m
+    if m % 4 == 0:
+        d = (a - 1) % 4
+    elif m % 2 == 0:
+        d = (a - 1) % 2
+    elif m % 3 == 0:
+        excluded = 3 * c % 9
+        divisors = list(filter(lambda divisor: divisor != excluded, divisors))
+
+    temp = generate_number(0, m - 1)
+
+    while not all(temp % divisor == 0 for divisor in divisors):
+        temp = generate_number(0, m - 1)
+
+    d = temp
+
+    return x, a, d, c, m
 
 
-def generator(x, a, c, m, quantity):
+def generator(x, a, d, c, m, quantity):
     while quantity > 0:
         yield x
 
-        x = (a * x + c) % m
+        x = (d * x * x + a * x + c) % m
         quantity -= 1
 
 
 if __name__ == "__main__":
-    linear_congruential(100, 110)
+    quadratic_congruential(100, 110)

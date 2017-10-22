@@ -1,3 +1,4 @@
+from math import inf
 from random import randint
 
 
@@ -30,3 +31,16 @@ def find_divisors(number):
 
 def find_prime_divisors(number):
     return filter(lambda element: is_prime(element), find_divisors(number))
+
+
+def get_inversed(x, module):
+    if x == 0:
+        return inf
+    if x == inf:
+        return 0
+
+    for number in range(2, module):
+        if (x * number) % module == 1:
+            return number
+
+    return False
