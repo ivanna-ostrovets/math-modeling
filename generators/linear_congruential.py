@@ -49,5 +49,5 @@ def generator(x, a, c, m, quantity):
         quantity -= 1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     linear_congruential(100, 110)

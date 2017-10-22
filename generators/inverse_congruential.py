@@ -40,5 +40,5 @@ def generator(x, a, c, p, quantity):
         quantity -= 1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     inverse_congruential(100, 110)

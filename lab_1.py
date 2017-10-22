@@ -14,7 +14,7 @@ GENERATORS = {
 }
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     min, max = 100, 110
 
     print('Generator numbers:')

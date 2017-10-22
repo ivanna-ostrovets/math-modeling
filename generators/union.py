@@ -37,5 +37,5 @@ def generate_numbers(min, max, quantity, method_1, method_2, m=None):
     return [(number - list_2[index]) % m for index, number in enumerate(list_1)]
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     union(100, 110)

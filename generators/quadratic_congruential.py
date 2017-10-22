@@ -64,5 +64,5 @@ def generator(x, a, d, c, m, quantity):
         quantity -= 1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     quadratic_congruential(100, 110)

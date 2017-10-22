@@ -35,5 +35,5 @@ def generator(m, quantity):
         quantity -= 1
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     fibonacci(100, 110)
