@@ -30,7 +30,7 @@ def find_divisors(number):
 
 
 def find_prime_divisors(number):
-    return filter(lambda element: is_prime(element), find_divisors(number))
+    return list(filter(lambda element: is_prime(element), find_divisors(number)))
 
 
 def get_inversed(x, module):
