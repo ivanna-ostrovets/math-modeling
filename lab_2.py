@@ -1,4 +1,5 @@
 from generators.linear_congruential import generate_numbers
+from generators.utils import generate_prime_number
 
 
 MIN = 100
@@ -6,16 +7,20 @@ MAX = 120
 
 
 def choose_variables():
-    points = []
+    # points = []
 
-    print('Enter four figure points')
+    # print('Enter four figure points')
 
-    for i in range(4):
-        print('Point', i + 1)
-        points.append((int(input('x: ')), int(input('y: '))))
+    # for i in range(4):
+    #     print('Point', i + 1)
+    #     points.append((int(input('x: ')), int(input('y: '))))
 
-    n = int(input('Enter n (points number): '))
-    k = int(input('Enter k (experiments number): '))
+    # n = int(input('Enter n (points number): '))
+    # k = int(input('Enter k (experiments number): '))
+
+    points = [(10, 5), (12, 7), (15, 6.5), (14, 5.5)]
+    n = 20
+    k = 20
 
     x_coordinates = [point[0] for point in points]
     y_coordinates = [point[1] for point in points]
@@ -29,8 +34,10 @@ def choose_variables():
 
 
 def generate_point(a, b, c, d):
-    r = generate_numbers(MIN, MAX, 1)[0]
-    g = generate_numbers(MIN, MAX, 1)[0]
+    m = generate_prime_number(MIN, MAX)
+
+    r = generate_numbers(MIN, MAX, 1, m)[0] / m
+    g = generate_numbers(MIN, MAX, 1, m)[0] / m
 
     x = (b - a) * r + a
     y = (d - c) * g + c
@@ -43,7 +50,7 @@ def belong_to_figure(points, point):
 
     start_x, start_y = points[0]
 
-    for index in range(1, len(points) + 1):
+    for index in range(1, len(points)):
         p1x, p1y = points[index]
 
         try:
