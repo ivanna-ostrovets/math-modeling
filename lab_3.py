@@ -57,7 +57,7 @@ def requests_system(tau, param_t, full_time):
 
 if __name__ == '__main__':
     tau = 0.8
-    param_t = 2.4
+    param_t = 0.9
     full_time = 30 + 9 % 4
     k = 6
     all_requests = 0

@@ -19,8 +19,8 @@ def choose_variables():
     # k = int(input('Enter k (experiments number): '))
 
     points = [(10, 5), (12, 7), (15, 6.5), (14, 5.5)]
-    n = 20
-    k = 20
+    n = 100
+    k = 120
 
     x_coordinates = [point[0] for point in points]
     y_coordinates = [point[1] for point in points]
@@ -88,9 +88,10 @@ if __name__ == '__main__':
 
         try:
             squares.append((m / n) * rectangle_square)
+            print((m / n) * rectangle_square)
         except ZeroDivisionError:
             pass
 
-    average_square = int(sum(squares) / tries)
+    average_square = sum(squares) / tries
 
     print('\nFigure square:', average_square)
