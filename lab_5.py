@@ -1,4 +1,3 @@
-from math import ceil
 from random import uniform
 
 
@@ -61,7 +60,7 @@ if __name__ == '__main__':
             loss_call_probability
         ) = system_with_recall_sources(m, c, mu, nu, la)
 
-        print('Average quantity of busy equipment:', ceil(average_busy_equipment))
-        print('Average quantity of recall sources:', ceil(average_recall_sources))
+        print('Average quantity of busy equipment:', round(average_busy_equipment, 2))
+        print('Average quantity of recall sources:', round(average_recall_sources, 2))
         print('Average time from call to service:', round(average_time_from_call_to_service * 60, 3))
         print('Probability of loss initial call:', round(loss_call_probability, 2), '\n')
